@@ -12,7 +12,13 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'npm install'
-                sh 'npm run dev'
+                sh 'npm run build'
+            }
+        }
+        stage('deliver') { 
+            steps {
+                sh 'node .next/standalone/server.js'
+                echo 'Delivered'
             }
         }
     }
