@@ -17,8 +17,11 @@ pipeline {
         }
         stage('deliver') { 
             steps {
+                sh 'cp .next/static/ .next/standalone/.next/static/'
+                sh 'cp public/ .next/standalone/public/'
                 sh 'node .next/standalone/server.js'
-                echo 'Delivered'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
