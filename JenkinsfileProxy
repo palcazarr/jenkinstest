@@ -8,6 +8,11 @@ pipeline {
             args '-p 80:80 -p 443:443' 
         }
     }
+    stages{
+        stage('build'){
+            echo 'done'
+        }
+    }
     post { 
         always { 
             echo 'Done!'
