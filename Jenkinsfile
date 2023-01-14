@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Install') {
             steps {
+                sh 'apt-get install nodejs npm'
                 sh 'npm install -g pnpm'
                 sh 'pnpm install'
             }
