@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        dockerfile true
-    }
+    agent any
     stages {
         stage('Install') {
             steps {
@@ -11,7 +9,12 @@ pipeline {
         }
         stage('build') {
             steps {
-                echo 'Done!'
+                sh 'pnpm run build'
+            }
+        }
+        stage('launch') {
+            steps {
+                sh 'node node .next/standalone/server.js'
             }
         }
     }
