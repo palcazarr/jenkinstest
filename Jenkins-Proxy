@@ -1,0 +1,23 @@
+pipeline {
+    environment {
+        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
+    }
+    agent {
+        docker {
+            image 'nginx' 
+            args '-p 80:80 -p 443:443' 
+        }
+    }
+    stages {
+        stage('Build') { 
+            steps {
+                sh 'systemctl restart nginx'
+            }
+        }
+    }
+    post { 
+        always { 
+            echo 'Done!'
+        }
+    }
+}
