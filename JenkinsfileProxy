@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'nginx' 
-            args '-p 8080:80 -p 443:443 -p 80:80' 
+            args '-p 443:443 -p 80:80' 
         }
     }
     stages{
