@@ -8,13 +8,6 @@ pipeline {
             args '-p 80:80 -p 443:443' 
         }
     }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'systemctl restart nginx'
-            }
-        }
-    }
     post { 
         always { 
             echo 'Done!'
