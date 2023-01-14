@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh 'cp -r .next/static .next/standalone/.next/static'
                 sh 'cp -r ./public .next/standalone/public'
-                sh 'node .next/standalone/server.js'
+                ./scritps/deliver.sh
             }
         }
     }
