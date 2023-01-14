@@ -9,12 +9,9 @@ pipeline {
             }
         }
         stage('Install') {
-            container('node') {
-                steps {
-                    sh 'npm install -g pnpm'
-                    sh 'pnpm install'
-                }
-
+            steps {
+                sh 'npm install -g pnpm'
+                sh 'pnpm install'
             }
         }
         stage('build') {
