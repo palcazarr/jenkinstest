@@ -2,10 +2,12 @@ pipeline {
     agent any
     stages {
         stage('Install') {
-            steps {
-                sh 'sudo apt-get install nodejs npm'
-                sh 'sudo npm install -g pnpm'
-                sh 'pnpm install'
+            container('node') {
+                steps {
+                    sh 'npm install -g pnpm'
+                    sh 'pnpm install'
+                }
+
             }
         }
         stage('build') {
