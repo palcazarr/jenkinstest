@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'sudo npm -g install pnpm'
+                sh 'npm -g install pnpm'
                 sh 'pnpm install'
                 sh 'pnpm run dev'
             }
