@@ -1,0 +1,21 @@
+pipeline {
+    environment {
+        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
+    }
+    agent {
+        dockerfile true
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
+        }
+    }
+    post { 
+        always { 
+            echo 'Done!'
+        }
+    }
+}
