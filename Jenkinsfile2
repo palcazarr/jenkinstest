@@ -20,6 +20,7 @@ pipeline {
                 sh 'cp -r .next/static .next/standalone/.next/static'
                 sh 'cp -r ./public .next/standalone/public'
                 script {
+                    sh 'chmod +x -R ${env.WORKSPACE}'
                     sh './scripts/deliver.sh'
                 }
             }
