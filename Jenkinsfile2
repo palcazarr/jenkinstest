@@ -17,8 +17,8 @@ pipeline {
         }
         stage('deliver') { 
             steps {
-                sh 'cp -r .next/static .next/standalone/.next/static'
-                sh 'cp -r public .next/standalone/public'
+                cp -r .next/static .next/standalone/.next/static
+                cp -r public .next/standalone/public
                 ./scripts/deliver.sh
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 ./scripts/kill.sh
