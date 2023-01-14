@@ -20,7 +20,7 @@ pipeline {
                 sh 'cp -r .next/static .next/standalone/.next/static'
                 sh 'cp -r ./public .next/standalone/public'
                 scritps {
-                    sh ./scritps/deliver.sh
+                    sh './scritps/deliver.sh'
                 }
             }
         }
