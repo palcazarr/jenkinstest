@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage('build'){
             steps{
-                sh 'chmod -R 777 /usr/share/nginx/html'
+                sh 'sudo chmod -R 777 /usr/share/nginx/html'
                 sh 'cp ./nginx/index.html /usr/share/nginx/html/index.html'
             }
         }
