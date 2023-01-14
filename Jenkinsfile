@@ -1,14 +1,19 @@
 pipeline {
     agent {
-        docker {
-            image 'node:lts-bullseye-slim' 
-            args '-p 3000:3000' 
-        }
+        label 'linux'
     }
     stages {
-        stage('Test') {
+        stage('build next app') {
             steps {
-                sh 'node --version'
+                sh 'docker build -t nextapp:dev .'
+                sh 'docker run -p 3000:3000 --name nextapp -d nextapp:dev'
+            }
+        }
+        stage('build nginx') {
+            steps {
+                sh 'cd nginx/'
+                sh 'docker build -t nginxproxy:dev .'
+                sh 'docker run -p 80:80 -p 443:443 -d nginxproxy:dev --name nginxproxy'
             }
         }
     }
