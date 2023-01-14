@@ -6,9 +6,11 @@ pipeline {
         }
     }
     stages {
-        stage('Test') {
+        stage('Build') { 
             steps {
-                sh 'node --version'
+                sh 'sudo npm -g install pnpm'
+                sh 'pnpm install'
+                sh 'pnpm run dev'
             }
         }
     }
