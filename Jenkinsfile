@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build nginx') {
             steps {
-                sh 'docker build -f nginx/Dockerfile'
+                sh 'docker build --file ./nginx/Dockerfile -t nginxproxy:dev .'
                 sh 'docker run -d -p 80:80 -p 443:443 --rm nginxproxy:dev'
             }
         }

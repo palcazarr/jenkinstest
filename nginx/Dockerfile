@@ -1,4 +1,5 @@
 FROM nginx
-COPY index.html /usr/share/nginx/html/index.html
-COPY nginx.conf /etc/nginx/nginx.conf
-EXPOSE 8080
+COPY nginx/index.html /usr/share/nginx/html/index.html
+# COPY nginx/nginx.conf /etc/nginx/nginx.conf
+EXPOSE 80
+EXPOSE 443
