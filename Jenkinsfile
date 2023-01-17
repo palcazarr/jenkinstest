@@ -1,6 +1,6 @@
 pipeline {
     environment{
-        REDIRECTPORT = 3000
+        REDIRECTPORT = '3000'
         HOSTNAME = '192.168.64.3'
     }
     agent any
