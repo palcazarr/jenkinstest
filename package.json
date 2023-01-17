@@ -2,7 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build"
+    "build": "next build",
+    "predeploy": "docker build --file ./nginx/Dockerfile -t nginxproxy:dev .",
+    "deploy": "docker run --env HOSTNAME=localhost --env PORT=3000 -p 80:80 -p 443:443 -d nginxproxy:dev"
   },
   "dependencies": {
     "next": "latest",

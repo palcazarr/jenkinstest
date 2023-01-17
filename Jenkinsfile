@@ -1,4 +1,8 @@
 pipeline {
+    environment{
+        REDIRECTPORT = 3000
+        HOSTNAME = 192.168.64.3
+    }
     agent any
     stages {
         stage('build next app') {
@@ -9,7 +13,9 @@ pipeline {
         }
         stage('build nginx') {
             steps {
-                sh 'docker build --file ./nginx/Dockerfile -t nginxproxy:dev .'
+                docker.build('nginxproxy:dev:', '-f /nginx/Dockerfile \
+                    --build-arg HOSTNAME="$HOSTNAME" \
+                    --build-arg REDIRECTPORT="$REDIRECTPORT" .')
                 sh 'docker run -d -p 80:80 -p 443:443 --rm nginxproxy:dev'
             }
         }
