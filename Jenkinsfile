@@ -14,7 +14,7 @@ pipeline {
         stage('build nginx') {
             steps {
                 script{
-                    docker.build('nginxproxy:dev:', '-f nginx/Dockerfile \
+                    docker.build('nginxproxy:dev', '-f nginx/Dockerfile \
                         --build-arg HOSTNAME="$HOSTNAME" \
                         --build-arg REDIRECTPORT="$REDIRECTPORT" .')
                 }
