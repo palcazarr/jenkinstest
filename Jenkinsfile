@@ -13,9 +13,11 @@ pipeline {
         }
         stage('build nginx') {
             steps {
-                docker.build('nginxproxy:dev:', '-f /nginx/Dockerfile \
-                    --build-arg HOSTNAME="$HOSTNAME" \
-                    --build-arg REDIRECTPORT="$REDIRECTPORT" .')
+                script{
+                    docker.build('nginxproxy:dev:', '-f nginx/Dockerfile \
+                        --build-arg HOSTNAME="$HOSTNAME" \
+                        --build-arg REDIRECTPORT="$REDIRECTPORT" .')
+                }
                 sh 'docker run -d -p 80:80 -p 443:443 --rm nginxproxy:dev'
             }
         }
